@@ -40,9 +40,10 @@
 - `git checkout <commit/branch>`
 	- for example: `git checkout main`
 - `git push`
-- `git branch <branchname>`
-- `git checkout -b <branchname>`
-- `git tag`
+- `git branch <branch>`
+- `git checkout -b <branch>`
+- `git tag <tag name>`
+- `git merge <branch>`
 
 ## Steps to change files in a repository:
 
