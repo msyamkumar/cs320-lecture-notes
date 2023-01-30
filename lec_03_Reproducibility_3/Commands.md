@@ -2,18 +2,18 @@
 
 ## SSH command
 
-- ssh <USER>@<IP>
+- `ssh <USER>@<IP>`
 - Ctrl + C (kill signal)
 - Ctrl + D (exit signal)
 
 ## shell commands
 
-- pwd
-- ls
-- cd <directory>
-- cd ..
-- cat <file>
-- Ctrl + R
+- `pwd`
+- `ls`
+- `cd <directory>`
+- `cd ..`
+- `cat <file>`
+- `Ctrl + R`
 - tab (autocomplete commands)
 
 ## jupyter lab
@@ -26,17 +26,23 @@
 
 ## git commands
 
-- git clone <repo URL>
-- git pull
-- git add <file>
-- git status
-- git diff
-- git restore <file>
-- git commit
-- git commit -m "<commit message>"
-- git log
-- git checkout <commit/branch>
-- git push 
+- `git clone <repo URL>`
+- `git pull`
+- `git add <file>`
+- `git status`
+- `git diff`
+- `git restore <file>`
+- `git commit`
+- `git config --global user.email "you@example.com"`
+- `git config --global user.name "Your Name"`
+- `git commit -m "<commit message>"`
+- `git log`
+- `git checkout <commit/branch>`
+	- for example: `git checkout main`
+- `git push`
+- `git branch <branchname>`
+- `git checkout -b <branchname>`
+- `git tag`
 
 ## Steps to change files in a repository:
 
