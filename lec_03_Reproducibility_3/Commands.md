@@ -15,6 +15,7 @@
 - `cat <file>`
 - `Ctrl + R`
 - tab (autocomplete commands)
+- `mkdir <dir>`
 
 ## jupyter lab
 
@@ -44,6 +45,7 @@
 - `git checkout -b <branch>`
 - `git tag <tag name>`
 - `git merge <branch>`
+- `git init`
 
 ## Steps to change files in a repository:
 
