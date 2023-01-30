@@ -16,6 +16,7 @@
 - `Ctrl + R`
 - tab (autocomplete commands)
 - `mkdir <dir>`
+- `nano <file>`
 
 ## jupyter lab
 
