@@ -31,6 +31,14 @@ last_visit = 0 # TODO: dict of visit times, for each IP
 
 # STATIC
 # @ operator is called a "decorator"
+# STATIC
+# @ operator is called a "decorator"
+@app.route("/")
+def home():
+    with open("index.html") as f:
+        html = f.read()
+        
+    return html
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True, threaded=False)
