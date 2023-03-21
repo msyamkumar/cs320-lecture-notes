@@ -1,7 +1,4 @@
 import flask
-import matplotlib.pyplot as plt
-import io # input / output
-import pandas as pd
 
 # Notes for matplotlib.pyplot module
 """
@@ -62,32 +59,6 @@ More than 20 figures have been opened. Figures created through the pyplot interf
      6. create a line plot with temps Series
 
 """
-@app.route("/plot1.png")
-def plot1():
-    fig, ax = plt.subplots(figsize=(3, 2))
-    #pd.Series(temps).plot.line(ax=ax)
-    
-    #CDF code
-    s = pd.Series(sorted(temps))
-    rev = pd.Series((s.index+1)/len(s)*100, index=s.values)
-    rev.plot.line(ax=ax, ylim=0, drawstyle="steps-post")
-    
-    ax.set_xlabel("Temperatures")
-    ax.set_ylabel("Distribution")
-    plt.tight_layout()
-    
-    # v1 - write and read a temporary plot file (cumbersome)
-    # with open("temporary.png", "wb") as f:
-    #     fig.savefig(f)
-    # with open("temporary.png", "rb") as f:
-    #     return f.read()
-    
-    # v2 - write and read from a fake file
-    f = io.BytesIO() 
-    fig.savefig(f)
-    plt.close()
-    
-    return flask.Response(f.getvalue(), headers={"Content-type": "image/png"})
 
 # TODO: add route to plot2.svg
 """
@@ -98,20 +69,6 @@ Things to change from plot1 function:
      3. SVG files have text type (unlike PNG) - so we should use io.StringIO
 
 """
-@app.route("/plot2.svg")
-def plot2():    
-    fig, ax = plt.subplots(figsize=(3, 2))
-    #pd.Series(temps).plot.line(ax=ax)
-    pd.Series(temps).plot.hist(ax=ax, bins=100)
-    
-    ax.set_ylabel("Temperatures")
-    plt.tight_layout()
-    
-    f = io.StringIO() 
-    fig.savefig(f, format="svg")
-    plt.close()
-    
-    return flask.Response(f.getvalue(), headers={"Content-type": "image/svg+xml"})
 
 # TODO: add route for "/upload"
 """
@@ -134,21 +91,6 @@ Use POST request instead:
      2. Humans don't send POST requests, instead we need to use "curl -X POST <URL> -d <data>" --- curl is a simple command line tool that enables us to send HTTP requests
      3. Use flask.request.get_data() - make sure to convert type to str
 """
-@app.route("/upload", methods=["POST"])
-def upload():
-    # v1 - query string
-    # new_temps = flask.request.args["temps"]
-    # new_temps = new_temps.split(",")
-    # for val in new_temps:
-    #     temps.append(float(val))
-    
-    # v2 - POST request
-    new_temps = str(flask.request.get_data(), encoding="utf-8")
-    new_temps = new_temps.split(",")
-    for val in new_temps:
-        temps.append(float(val))
-        
-    return f"thanks, you now have {len(temps)} records"
 
 # TODO: change SVG to histogram - very sensitive to number of "bins"
 # TODO: change PNG to CDF (Cumulative Distribution Function):
